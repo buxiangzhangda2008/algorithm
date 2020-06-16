@@ -49,89 +49,137 @@ package com.huanglei.algo;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/regular-expression-matching
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * <p>
+ * /**
+ * * // dp[i][j]
+ * * // i str中的位置
+ * * //j pattern中位置
+ * * //dp[i][j]表示 str到i 与pattern到j 是否匹配
+ * * //dp[m][n]是否为true
+ * * <p>
+ * * //转换公式
+ * * <p>
+ * * dp[i][j] = {
+ * * <p>
+ * * if(p[j]=.) {
+ * * //一定要抵消一个字符
+ * * dp[i-1][j] = dp[i-2][j-1];
+ * * }
+ * * <p>
+ * * if(p[j]=*) {
+ * * //相当于加了n个s[i-1],所以
+ * * if(dp[i-1][j-1]){
+ * * dp[i-1][j] = true;
+ * * }else{
+ * * if(p[j-1]=s[i-1]){
+ * * dp[i-1][j] = dp[i-2][j];
+ * * }else{
+ * * dp[i-1][j] = false;
+ * * }
+ * * }
+ * * }
+ * * if(p[j]=a-z) {
+ * * if(p[j]==s[i-1]){
+ * * dp[i-1][j] = dp[i-2][j-1];
+ * * }else{
+ * * dp[i-1][j] = false;
+ * * }
+ * * }
+ * * <p>
+ * * if(p[j-1]==.){
+ * * dp[i][j-1] = dp[i-1][j-2]
+ * * }
+ * * if(p[j-1]==*){
+ * * if(s[i]==p[j-2]){
+ * * dp[i][j-1] = dp[i-1][j-1];
+ * * }else{
+ * * dp[i][j-1] = false;
+ * * }
+ * * }
+ * * if(p[j-1]==a-z){
+ * * if(s[i]==p[j-1]){
+ * * dp[i][j-1] = d[i-1][j-2];
+ * * }else{
+ * * dp[i][j-1] = false;
+ * * }
+ * * }
+ * * }
  */
+
 public class Leetcode10 {
 
     public static void main(String args[]) {
-//        System.out.println(isMatch(121));
-//        System.out.println(isMatch(-121));
+
+        System.out.println(isMatch("aab", "**c*a*b***"));
+        System.out.println(isMatch("aab", "a*b*"));
+        System.out.println(isMatch("aa", "a*"));
+        System.out.println(isMatch("aaa", "ab*a*c*a"));
+        System.out.println(isMatch("aaa", "aa*"));
+        System.out.println(isMatch("", ".*"));
+        System.out.println(isMatch("", ""));
+
     }
 
-    /**
-     * @return
-     */
-    public static boolean isMatch(String str, String pattern) {
-        // dp[i][j]
-        // i str中的位置
-        //j pattern中位置
-        //dp[i][j]表示 str到i 与pattern到j 是否匹配
-        //dp[m][n]是否为true
+    private static char[] trimStars(String pattern) {
+        StringBuilder sb = new StringBuilder("");
 
-        //转换公式
-        /**
-         * dp[i][j] = { if(dp[i-1][j-1] = true)
-         *                  if(p[j-1]=.) 判断p[j]与s[i]是否相等
-         *                  if(p[j-1]=*) {
-         *                      1\判断前一个不为*的值与s[i]是否相等 dp[i][j-1] = true;
-         *                          if not
-         *                          p[j]==s[i]?
-         *                      }
-         *                  if(p[j-1]=a) 判断p[j]==s[i]
-         *                  : dp[i][j]
-         *              if(dp[i-1][j-1] = false
-         *                   p[j]  1,2,3
-         *                  dp[i-1][j]是否匹配
-         *
-         *                  dp[i][j]是否匹配
-         *                  dp[i][j-1]是否匹配
-         */
-
-        boolean dp[][] = new boolean[str.length() + 1][pattern.length() + 1];
-
-        for (int i = 0; i < dp.length; i++) {
-            dp[i][0] = false;
+        int lastStarPos = -1;
+        for (int i = 0; i < pattern.length(); i++) {
+            if (pattern.charAt(i) == '*') {
+                if (i - lastStarPos != 1) {
+                    sb.append(pattern.charAt(i));
+                }
+                lastStarPos = i;
+            } else {
+                sb.append(pattern.charAt(i));
+            }
         }
-        for (int j = 0; j < dp[0].length; j++) {
-            dp[0][j] = false;
+        System.out.println(sb.toString());
+        return sb.toString().toCharArray();
+    }
+
+    public static boolean isMatch(String str, String pattern) {
+        //去掉连续的*
+        char[] p = trimStars(pattern);
+        if (str == null || pattern == null) {
+            return false;
+        }
+
+        char s[] = str.toCharArray();
+
+        boolean dp[][] = new boolean[s.length + 1][p.length + 1];
+        dp[0][0] = true;
+        for (int i = 0; i < p.length ; i++) {
+            if (p[i] == '*' && i >= 1) {
+                dp[0][i+1] = dp[0][i - 1];
+            } else {
+                dp[0][i+1] = false;
+            }
+        }
+        for (int i = 1; i < s.length; i++) {
+            dp[i][0] = false;
         }
 
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[i].length; j++) {
-//                if (dp[i - 1][j - 1]) {
-                    char preP = pattern.charAt(j - 1);
-                    if (isAZ(preP) || preP == '.') {
-                        //a-z
-                        dp[i][j - 1] = false;
-                        dp[i - 1][j] = false;
-                        char pChar = pattern.charAt(j - 1);
-                        if (pChar == '*') {
-                            dp[i][j] = str.charAt(i - 1) == preP || preP == '.';
-                        } else {
-                            dp[i][j] = str.charAt(i - 1) == pChar || pChar == '.';
-                        }
-                    }
-                    if (preP == '*') {
-                        char c = str.charAt(i - 1);
-                        int k = 0;
-                        //first not *
-                        for (k = j - 2; k >= 0; k--) {
-                            if (pattern.charAt(k) != '*')
-                                break;
-                        }
-                        dp[i][j] = pattern.charAt(k) == c || pattern.charAt(k) == '.';
 
-                        dp[i][j-1] = pattern.charAt(k) == c || pattern.charAt(k) == '.';
-                        dp[i-1][j] = true;
+                if (p[j - 1] == s[i - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p[j - 1] == '.') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p[j - 1] == '*') {
+                    if (s[i - 1] == p[j - 2] || p[j - 2] == '.') {
+                        dp[i][j] = dp[i - 1][j] || dp[i][j - 2];
+                    } else {
+                        if (j >= 2)
+                            dp[i][j] = dp[i][j - 2];
+                        else dp[i][j] = false;
                     }
-//                } else {
-//
-//                }
+                }
+
             }
         }
-    }
-
-    public static boolean isAZ(char c) {
-        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+        return dp[s.length][p.length];
     }
 
 }

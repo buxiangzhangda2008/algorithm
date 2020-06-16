@@ -1,12 +1,14 @@
 package com.huanglei.algo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AlgoPractice {
 
-    static String retStr = "";
-    static int count = 0;
+    private static String retStr = "";
+    private static int count = 0;
 
     public static void main(String[] args) {
         //Scanner in = new Scanner(System.in);
@@ -21,30 +23,29 @@ public class AlgoPractice {
         //不允许暴力破解
 
         String intStr = "11211211131245";
-        printStarStr2(intStr, 6);
-//        printStarStr(intStr, 5);
+//        printStarStr2(intStr, 6);
+        printStarStr(intStr, 5);
+        System.out.println(strSet.size());
     }
 
+    private static Set<String> strSet = new HashSet<>();
+
     public static void printStarStr(String str, int star) {
-        if (star == 0 && str.length() <= 3 && str.length() > 0) {
+
+        if (star == 0 && str.length() <= 3) {
             retStr = retStr + str;
-            System.out.println(retStr);
-            System.out.println(++count);
+            strSet.add(retStr);
             retStr = "";
         }
         if (star <= 0 || str.length() > (star + 1) * 3) {
-
             return;
         }
-        for (int i = 1; i < str.length(); i++) {
-            //*的位置
-            if (i > 3) return;
+        for (int i = 1; i < str.length() && i <= 3; i++) {
             String ret = str.substring(0, i);
             String tmpStr = retStr;
             retStr = retStr + ret + "*";
             printStarStr(str.substring(i), star - 1);
             retStr = tmpStr;
-
         }
     }
 
