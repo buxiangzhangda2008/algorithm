@@ -50,60 +50,6 @@ package com.huanglei.algo;
  * 链接：https://leetcode-cn.com/problems/regular-expression-matching
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * <p>
- * /**
- * * // dp[i][j]
- * * // i str中的位置
- * * //j pattern中位置
- * * //dp[i][j]表示 str到i 与pattern到j 是否匹配
- * * //dp[m][n]是否为true
- * * <p>
- * * //转换公式
- * * <p>
- * * dp[i][j] = {
- * * <p>
- * * if(p[j]=.) {
- * * //一定要抵消一个字符
- * * dp[i-1][j] = dp[i-2][j-1];
- * * }
- * * <p>
- * * if(p[j]=*) {
- * * //相当于加了n个s[i-1],所以
- * * if(dp[i-1][j-1]){
- * * dp[i-1][j] = true;
- * * }else{
- * * if(p[j-1]=s[i-1]){
- * * dp[i-1][j] = dp[i-2][j];
- * * }else{
- * * dp[i-1][j] = false;
- * * }
- * * }
- * * }
- * * if(p[j]=a-z) {
- * * if(p[j]==s[i-1]){
- * * dp[i-1][j] = dp[i-2][j-1];
- * * }else{
- * * dp[i-1][j] = false;
- * * }
- * * }
- * * <p>
- * * if(p[j-1]==.){
- * * dp[i][j-1] = dp[i-1][j-2]
- * * }
- * * if(p[j-1]==*){
- * * if(s[i]==p[j-2]){
- * * dp[i][j-1] = dp[i-1][j-1];
- * * }else{
- * * dp[i][j-1] = false;
- * * }
- * * }
- * * if(p[j-1]==a-z){
- * * if(s[i]==p[j-1]){
- * * dp[i][j-1] = d[i-1][j-2];
- * * }else{
- * * dp[i][j-1] = false;
- * * }
- * * }
- * * }
  */
 
 public class Leetcode10 {
