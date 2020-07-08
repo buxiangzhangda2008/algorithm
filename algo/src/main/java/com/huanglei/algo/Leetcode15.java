@@ -35,5 +35,6 @@ public class Leetcode15 {
         for(int i=0;i<nums.length;i++){
             map.put(nums[i],i);
         }
+        return null;
     }
 }
