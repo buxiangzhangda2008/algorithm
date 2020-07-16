@@ -19,6 +19,7 @@ import java.util.*;
  * 你能尝试使用一趟扫描实现吗？
  */
 
+//使用双指针，两个指针间距为n，当第1个指针走到末尾时，第二个指针就是目标对象；
 public class Leetcode19 {
 
     //    Definition for singly-linked list.
