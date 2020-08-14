@@ -2,7 +2,7 @@ package com.huanglei.algo;
 
 /**
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
- *
+ * <p>
  * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
  * 输出：7 -> 0 -> 8
  * 原因：342 + 465 = 807
@@ -68,7 +68,8 @@ public class Leetcode2 {
         }
         return ret;
     }
-    public static ListNode addList(ListNode l1,ListNode l2){
+
+    public static ListNode addList(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(0);
         ListNode p = l1, q = l2, curr = dummyHead;
         int carry = 0;

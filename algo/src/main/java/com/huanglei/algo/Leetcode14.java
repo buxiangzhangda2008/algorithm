@@ -40,7 +40,7 @@ public class Leetcode14 {
 
 
     public static String longestCommonPrefix(String[] strs) {
-        if(strs==null||strs.length==0){
+        if (strs == null || strs.length == 0) {
             return "";
         }
         int pos = 0;

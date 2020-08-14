@@ -95,11 +95,11 @@ public class Leetcode10 {
 
         boolean dp[][] = new boolean[s.length + 1][p.length + 1];
         dp[0][0] = true;
-        for (int i = 0; i < p.length ; i++) {
+        for (int i = 0; i < p.length; i++) {
             if (p[i] == '*' && i >= 1) {
-                dp[0][i+1] = dp[0][i - 1];
+                dp[0][i + 1] = dp[0][i - 1];
             } else {
-                dp[0][i+1] = false;
+                dp[0][i + 1] = false;
             }
         }
         for (int i = 1; i < s.length; i++) {

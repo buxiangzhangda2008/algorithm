@@ -33,9 +33,9 @@ public class Leetcode21 {
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if(l1==null)
+        if (l1 == null)
             return l2;
-        if(l2==null)
+        if (l2 == null)
             return l1;
         ListNode currL1 = l1;
         ListNode currL2 = l2;
@@ -43,7 +43,7 @@ public class Leetcode21 {
         if (currL1.val >= currL2.val) {
             resultList = l2;
             currL2 = currL2.next;
-        }else{
+        } else {
             resultList = l1;
             currL1 = currL1.next;
         }
