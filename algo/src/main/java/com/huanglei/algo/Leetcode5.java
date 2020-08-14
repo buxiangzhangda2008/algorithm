@@ -49,7 +49,7 @@ public class Leetcode5 {
         String longestStr = "";
 //        char schar[] = s.toCharArray();
         for (int i = 0; i < 2 * s.length() - 1; i++) {
-            int m , n ;
+            int m, n;
             if (i % 2 == 0) {
                 //偶数即为数组真实下标
                 m = n = i / 2;

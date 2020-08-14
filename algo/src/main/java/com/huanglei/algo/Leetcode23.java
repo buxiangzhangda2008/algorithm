@@ -26,10 +26,10 @@ public class Leetcode23 {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        if(lists.length==0){
+        if (lists.length == 0) {
             return null;
         }
-        return mergeKLists2Elements(lists,0, lists.length-1);
+        return mergeKLists2Elements(lists, 0, lists.length - 1);
 
     }
 
@@ -39,7 +39,7 @@ public class Leetcode23 {
             ListNode ln2 = mergeKLists2Elements(lists, start + ((end - start) / 2) + 1, end);
             return doMerge(ln1, ln2);
         }
-        if(end==start){
+        if (end == start) {
             return lists[start];
         }
         return doMerge(lists[start], lists[end]);

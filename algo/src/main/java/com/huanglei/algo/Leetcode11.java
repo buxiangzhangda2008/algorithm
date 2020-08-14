@@ -16,7 +16,7 @@ package com.huanglei.algo;
 public class Leetcode11 {
 
     public static void main(String args[]) {
-        int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7,8};
+        int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7, 8};
         System.out.println(maxArea(nums));
     }
 
@@ -28,8 +28,8 @@ public class Leetcode11 {
          */
         int maxArea = 0;
         int i = 0, j = (nums.length - 1);
-        while (j-i > 0) {
-            maxArea = Math.max(maxArea, (j-i) * (nums[i] > nums[j]? nums[j--]:nums[i++]));
+        while (j - i > 0) {
+            maxArea = Math.max(maxArea, (j - i) * (nums[i] > nums[j] ? nums[j--] : nums[i++]));
         }
         return maxArea;
     }

@@ -76,7 +76,7 @@ public class Leetcode18 {
                 integers.add(nums[j]);
                 lists.add(integers);
                 while (i < j && i < nums.length - 1 && nums[i] == nums[++i]) ;
-                while (i < j && j >= ignorePos+1 && nums[j] == nums[--j]) ;
+                while (i < j && j >= ignorePos + 1 && nums[j] == nums[--j]) ;
             }
         }
 	        

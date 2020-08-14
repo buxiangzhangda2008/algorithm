@@ -36,7 +36,7 @@ public class Leetcode17 {
         List<String> arr = new ArrayList();
         char[] cs = map.get(digits.substring(0, 1));
         for (int i = 0; i < cs.length; i++) {
-            arr.add(cs[i]+"");
+            arr.add(cs[i] + "");
         }
         dp[0] = arr;
         for (int j = 1; j < dp.length; j++) {

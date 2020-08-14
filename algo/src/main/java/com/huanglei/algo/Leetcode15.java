@@ -31,9 +31,9 @@ public class Leetcode15 {
 
 
     public static List<List<Integer>> threeSum(int[] nums) {
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            map.put(nums[i],i);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
         }
         return null;
     }
