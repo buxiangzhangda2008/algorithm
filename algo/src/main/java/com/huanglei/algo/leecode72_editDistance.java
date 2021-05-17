@@ -8,7 +8,8 @@ public class leecode72_editDistance {
 
 
     public static void main(String[] args) {
-        System.out.println(editDistance("intention", "execution"));
+//        System.out.println(editDistance("intention", "execution"));
+        System.out.println(editDistance("hrose", ""));
     }
 
     public static int editDistance(String word1, String word2) {
@@ -21,7 +22,8 @@ public class leecode72_editDistance {
         for (int j = 0; j < dp[0].length; j++) {
             dp[0][j] = j;
         }
-
+        //aaaa
+        //aabc
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[i].length; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1))
