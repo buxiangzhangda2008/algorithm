@@ -32,6 +32,32 @@ public class Leetcode21 {
         }
     }
 
+    public ListNode mergeTwoLists2(ListNode l1,ListNode l2){
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        ListNode dummy = new ListNode(-1);
+        ListNode curr = dummy;
+        while(true){
+            if(l1!=null&&l2!=null) {
+                if (l1.val > l2.val) {
+                    curr.next = l2;
+                    l2 = l2.next;
+                } else {
+                    curr.next = l1;
+                    l1 = l1.next;
+                }
+                curr = curr.next;
+            }else if(l1!=null) {
+                curr.next = l1;
+                break;
+            }else {
+                curr.next = l2;
+                break;
+            }
+        }
+
+        return dummy.next;
+    }
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1==null)
             return l2;
@@ -72,23 +98,23 @@ public class Leetcode21 {
         ListNode head1 = new Leetcode21.ListNode(1);
 //        Leetcode21.ListNode curr = head1;
 //        for (int i = 2; i <= 5; i++) {
-//        Leetcode21.ListNode node = new Leetcode21.ListNode(2);
-//        head1.next = node;
-//        Leetcode21.ListNode node1 = new Leetcode21.ListNode(4);
-//        node.next = node1;
+        Leetcode21.ListNode node = new Leetcode21.ListNode(2);
+        head1.next = node;
+        Leetcode21.ListNode node1 = new Leetcode21.ListNode(4);
+        node.next = node1;
 //        curr = node;
 //        }
         ListNode head2 = new Leetcode21.ListNode(2);
 //        Leetcode21.ListNode curr2 = head2;
 //        for (int i = 3; i <= 6; i++) {
-//        Leetcode21.ListNode node11 = new Leetcode21.ListNode(3);
-//        head2.next = node11;
-//        Leetcode21.ListNode node12 = new Leetcode21.ListNode(4);
-//        node11.next = node12;
+        Leetcode21.ListNode node11 = new Leetcode21.ListNode(3);
+        head2.next = node11;
+        Leetcode21.ListNode node12 = new Leetcode21.ListNode(4);
+        node11.next = node12;
 //            curr2 = node;
 //        }
 
-        Leetcode21.ListNode listNode = lc.mergeTwoLists(head1, head2);
+        Leetcode21.ListNode listNode = lc.mergeTwoLists2(head1, head2);
         while (listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;

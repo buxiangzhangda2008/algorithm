@@ -5,16 +5,45 @@ package com.huanglei.algo;
  * 股票买卖
  * 每天的股票价格[6,7,3,8,11,29,7]
  * 最多买卖k次
+ * 1、最多买卖1次
+ * 计算以每个pos为买入点的最大profit，即与买入点后每个值相减比较得profit
+ * 结果为max{profit[i]}
+ * 2、最多买卖2次
+ * 每个点都有两个状态持有、买入、卖出；没有卖出之前无法买入
+ * dp[i][status] = max{
+ *                  买： dp[i-1]-price[i]
+ *                  卖： dp[i-1]+price[i]
+ *                  持有：dp[i-1]
+ *                  }
+ *
+ * 3、买卖任意次
+ * 4、买卖k次
  */
 public class Leetcode123_maxprofit {
 
+    public static int maxProfit(int[] prices) {
+        int dp[][] = new int[prices.length][2];
+        //0 有股票
+        dp[0][0] = -prices[0];
+        //1 无股票
+        dp[0][1] = 0;
+        int max = 0;
+        for(int i=1;i<prices.length;i++){
+            //有股票，前一天就有，今天刚买的j
+            dp[i][0] = Math.max(dp[i-1][1] - prices[i],dp[i-1][0]);
+            //无股票，前一天持有or前一天买入，今天卖出
+            dp[i][1] = Math.max(dp[i-1][0]+prices[i],dp[i-1][1]);
+        }
+        return dp[prices.length-1][1];
+
+    }
 
     public static void main(String[] args) {
-//        System.out.println(editDistance("intention","execution"));
-        int[] prices = new int[]{1, 2, 3, 4, 5};
+        int[] prices = new int[]{1, 5, 2, 4, 10};
         int k = 12;
 //        System.out.println(maxProfit2(k, prices));
-        System.out.println(maxProfit(k, prices));
+//        System.out.println(maxProfit(k, prices));
+        System.out.println(maxProfit(prices));
 
     }
 

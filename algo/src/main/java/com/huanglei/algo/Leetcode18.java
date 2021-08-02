@@ -62,6 +62,7 @@ public class Leetcode18 {
                 }
                 continue;
             }
+	
 
             int ret = nums[i] + nums[k] + nums[j];
             if (ret > target) {
@@ -78,7 +79,7 @@ public class Leetcode18 {
                 while (i < j && j >= ignorePos+1 && nums[j] == nums[--j]) ;
             }
         }
-
+	        
         return lists;
     }
 }
