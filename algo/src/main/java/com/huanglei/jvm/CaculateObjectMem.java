@@ -6,23 +6,9 @@ import java.util.Stack;
 
 public class CaculateObjectMem {
     public static void main(String[] args) {
-//        Long longObj = new Long(1L);
-//        RamUsageEstimator.sizeOf(longObj);
-        boolean ret = new Long(1000) == new Long(1000);
-        System.out.println("Long is:" + ret);
-        boolean ret1 = new Double(1000) == new Double(1000);
-        System.out.println("Double is:" + ret1);
-        Stack s  = new Stack();
-        Double d2 = new Double(1001);
-        Double d1 = new Double(1000);
-        if (d2 > d1) {
-            System.out.println("d2 > d1");
-        }
-        Double d11 = new Double(29);
-        Double d12 = new Double(29);
-        if (d12 == d11) {
-            System.out.println("d2 == d1");
-        }
+        Long longObj = new Long(1L);
+        RamUsageEstimator.sizeOf(longObj);
+
 
     }
 }
