@@ -11,7 +11,10 @@ public class TreeNode {
     public TreeNode(){
 
     }
-
+    @Override
+    public String toString(){
+        return val+"";
+    }
     public static TreeNode buildTree(){
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);

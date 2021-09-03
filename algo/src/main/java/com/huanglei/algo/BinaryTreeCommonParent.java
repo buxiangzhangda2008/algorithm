@@ -1,38 +1,12 @@
 package com.huanglei.algo;
 
+import apple.laf.JRSUIUtils;
+
 import java.util.*;
 
 public class BinaryTreeCommonParent {
     public static void main(String[] args) {
-        TreeNode node1 = new TreeNode();
-        TreeNode node2 = new TreeNode();
-        TreeNode node3 = new TreeNode();
-        TreeNode node4 = new TreeNode();
-        TreeNode node5 = new TreeNode();
-        TreeNode node6 = new TreeNode();
-        TreeNode node7 = new TreeNode();
-        TreeNode node8 = new TreeNode();
-        TreeNode node9 = new TreeNode();
-        TreeNode node10 = new TreeNode();
-        node1.val = 1;
-        node2.val = 2;
-        node3.val = 3;
-        node4.val = 4;
-        node5.val = 5;
-        node6.val = 6;
-        node7.val = 7;
-        node8.val = 8;
-        node9.val = 9;
-        node10.val = 10;
-        node1.left = node2;
-        node1.right = node3;
-        node2.left = node4;
-        node2.right = node5;
-        node3.left = node6;
-        node3.right = node7;
-        node4.left = node8;
-        node4.right = node9;
-        node5.left = node10;
+        TreeNode node1 = TreeNode.buildTree();
         Set<Integer> integers = new HashSet<>();
         integers.add(8);
         integers.add(10);
@@ -81,16 +55,7 @@ public class BinaryTreeCommonParent {
         return null;
     }
 
-    static class TreeNode {
-        TreeNode left;
-        TreeNode right;
-        int val;
 
-        @Override
-        public String toString() {
-            return val + "";
-        }
-    }
     Map<Integer, TreeNode> parent = new HashMap<Integer, TreeNode>();
     Set<Integer> visited = new HashSet<Integer>();
 
