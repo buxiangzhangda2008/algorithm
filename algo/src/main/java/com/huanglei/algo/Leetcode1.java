@@ -17,15 +17,6 @@ import java.util.Map;
 public class Leetcode1 {
 
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
     public static void main(String args[]) {
         int[] ret = twoSum(new int[]{1, 2, 3, 4, 5, 7}, 9);
         if (ret != null)
