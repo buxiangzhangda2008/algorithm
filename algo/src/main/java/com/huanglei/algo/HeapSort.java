@@ -18,11 +18,11 @@ public class HeapSort {
             if (temp <= arr[child]) {
                 break;
             }
-            // 若子节点小，则交换
+            //若子节点小，则交换
             arr[pos] = arr[child];
         }
 
-        // 通过上面的for循环找到了当前要调整的节点要存放的位置
+        //通过上面的for循环找到了当前要调整的节点要存放的位置
         arr[pos] = temp;
     }
 
@@ -43,7 +43,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int a[] = { 5, 4, 9, 8, 7, 6, 0, 1, 3, 2 };
+        int a[] = {5, 4, 9, 8, 7, 6, 0, 1, 3, 2};
         heapSort(a);
         System.out.println(Arrays.toString(a));
     }

@@ -8,7 +8,7 @@ public class leecode72_editDistance {
 
 
     public static void main(String[] args) {
-        System.out.println(editDistance("intention","execution"));
+//        System.out.println(editDistance("intention", "execution"));
         System.out.println(editDistance("hrose", ""));
     }
 
