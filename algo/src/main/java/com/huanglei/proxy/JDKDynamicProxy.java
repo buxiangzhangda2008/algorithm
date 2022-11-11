@@ -1,6 +1,6 @@
 package com.huanglei.proxy;
 
-import com.sun.deploy.net.proxy.ProxyHandler;
+// import com.sun.deploy.net.proxy.ProxyHandler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -15,6 +15,15 @@ public class TreeNode {
     public String toString(){
         return val+"";
     }
+    /**
+     *               1
+                   /   \
+                  2     3 
+                /   \  / \
+               4   5  6  7 
+             /   \  /
+             8   9 10 
+     */
     public static TreeNode buildTree(){
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
