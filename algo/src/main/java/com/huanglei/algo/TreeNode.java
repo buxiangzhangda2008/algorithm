@@ -1,9 +1,9 @@
 package com.huanglei.algo;
 
 public class TreeNode {
-    TreeNode left;
-    TreeNode right;
-    int val;
+    public TreeNode left;
+    public TreeNode right;
+    public int val;
 
     public TreeNode(int val) {
         this.val = val;
@@ -35,6 +35,7 @@ public class TreeNode {
         TreeNode node8 = new TreeNode(8);
         TreeNode node9 = new TreeNode(9);
         TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -44,6 +45,8 @@ public class TreeNode {
         node4.left = node8;
         node4.right = node9;
         node5.left = node10;
+        node10.left = node11;
+
         return node1;
     }
 
